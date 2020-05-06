@@ -32,6 +32,7 @@ class Main extends Component {
 
     render() {
         const { products } = this.state;
+        const { cartSize } = this.props;
 
         return (
             <ProductList>
@@ -46,7 +47,7 @@ class Main extends Component {
                         >
                             <div>
                                 <MdAddShoppingCart size={16} color="#fff" />
-                                {this.props.cartSize}
+                                {cartSize}
                             </div>
                             <span>ADCIONAR AO CARRINHO</span>
                         </button>
