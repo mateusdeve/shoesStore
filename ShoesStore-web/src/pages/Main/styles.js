@@ -38,7 +38,7 @@ export const ProductList = styled.ul`
             margin-top: auto;
             align-items: center;
             display: flex;
-            transition: background 0.2s;
+            transition: background;
 
             &:hover {
                 background: ${lighten(0.05, '#141419')};

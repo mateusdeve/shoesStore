@@ -23,7 +23,7 @@ export const Container = styled.div`
         transition: background 0.2s;
 
         &:hover {
-            background: ${lighten(0.05, '#141419')};
+            background: ${lighten(0.3, '#141419')};
         }
     }
 `;
