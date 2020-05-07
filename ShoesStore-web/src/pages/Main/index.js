@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { ProductList } from './styles';
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
+import { addToCart } from '../../store/modules/cart/actions';
 
 class Main extends Component {
     state = {
@@ -24,15 +25,12 @@ class Main extends Component {
     handleAddProduct = (product) => {
         const { dispatch } = this.props;
 
-        dispatch({
-            type: 'ADD_TO_CART',
-            product,
-        });
+        dispatch(addToCart(product));
     };
 
     render() {
         const { products } = this.state;
-        const { cartSize } = this.props;
+        const { amount } = this.props;
 
         return (
             <ProductList>
@@ -47,7 +45,7 @@ class Main extends Component {
                         >
                             <div>
                                 <MdAddShoppingCart size={16} color="#fff" />
-                                {cartSize}
+                                {amount[product.id] || 0}
                             </div>
                             <span>ADCIONAR AO CARRINHO</span>
                         </button>
@@ -58,6 +56,11 @@ class Main extends Component {
     }
 }
 
-export default connect((state) => ({
-    cartSize: state.cart.length,
-}))(Main);
+const mapStateToProps = (state) => ({
+    amount: state.cart.reduce((amount, product) => {
+        amount[product.id] = product.amount;
+        return amount;
+    }, {}),
+});
+
+export default connect(mapStateToProps)(Main);
