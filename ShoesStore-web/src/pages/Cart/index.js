@@ -8,15 +8,18 @@ import {
     MdAddCircleOutline,
 } from 'react-icons/md';
 import { Container, ProducTable, Total } from './styles';
-import { removeToCart, updateAmount } from '../../store/modules/cart/actions';
+import {
+    removeToCart,
+    updateAmountRequest,
+} from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/format';
 
 function Cart({ total, cart, dispatch }) {
     function increment(product) {
-        dispatch(updateAmount(product.id, product.amount + 1));
+        dispatch(updateAmountRequest(product.id, product.amount + 1));
     }
     function decrement(product) {
-        dispatch(updateAmount(product.id, product.amount - 1));
+        dispatch(updateAmountRequest(product.id, product.amount - 1));
     }
 
     return (
