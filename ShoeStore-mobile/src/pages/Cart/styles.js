@@ -12,7 +12,8 @@ export const CardsContainer = styled.ScrollView.attrs(() => ({
     },
 }))`
     background: #fff;
-    margin: 20px;
+    margin: 80px 25px;
+    border-radius: 4px;
 `;
 
 export const TotalLabel = styled.Text`

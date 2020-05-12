@@ -5,9 +5,10 @@ export const ProdutosSection = styled.ScrollView.attrs(() => ({
     showsHorizontalScrollIndicator: false,
     contentContainerStyle: {
         alignItems: 'center',
-        paddingLeft: 16,
     },
-}))``;
+}))`
+    margin-top: 80px;
+`;
 export const CardProduct = styled.View`
     width: 220px;
     height: 358px;

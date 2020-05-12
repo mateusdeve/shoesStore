@@ -1,5 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Img from '../../assets/images/img.png';
+import * as CartActions from '../../store/modules/cart/actions';
+import { formatPrice } from '../../util/format';
 
 import {
     Card,
@@ -15,7 +19,21 @@ import {
     ItenTotalPrice,
 } from './styles';
 
-const CartItem = () => {
+const CartItem = ({
+    navigation,
+    products,
+    total,
+    removeFromCart,
+    updateAmountRequest,
+}) => {
+    function decrement(product) {
+        updateAmountRequest(product.id, product.amount - 1);
+    }
+
+    function increment(product) {
+        updateAmountRequest(product.id, product.amount + 1);
+    }
+
     return (
         <Card>
             <Item>
@@ -37,4 +55,21 @@ const CartItem = () => {
     );
 };
 
-export default CartItem;
+const mapStateToProps = (state) => ({
+    products: state.cart.map((product) => ({
+        ...product,
+        subtotal: formatPrice(product.price * product.amount),
+        priceFormatted: formatPrice(product.price),
+    })),
+    total: formatPrice(
+        state.cart.reduce(
+            (total, product) => total + product.price * product.amount,
+            0
+        )
+    ),
+});
+
+const mapDispatchToProps = (dispatch) =>
+    bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

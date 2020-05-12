@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Main from './pages/Main';
 import Cart from './pages/Cart';
+import Header from './components/header';
+import color from './styles/color';
 
 const Stack = createStackNavigator();
 
@@ -12,14 +14,12 @@ function Routes() {
         <NavigationContainer>
             <Stack.Navigator
                 screenOptions={{
-                    headerTitleAlign: 'center',
-                    headerStyle: {
-                        backgroundColor: '#191920',
+                    header: ({ navigation }) => <Header {...navigation} />,
+                    cardStyle: {
+                        backgroundColor: color.dark,
                     },
-                    headerTintColor: '#fff',
-
-                    headerTitleStyle: {
-                        fontWeight: 'bold',
+                    headerStyle: {
+                        height: 80,
                     },
                 }}
             >

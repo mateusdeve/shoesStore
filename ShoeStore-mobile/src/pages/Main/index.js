@@ -7,6 +7,9 @@ const Main = ({ navigation }) => {
         <Container>
             <ProductContainer>
                 <ProductSection navigation={navigation} />
+                <ProductSection navigation={navigation} />
+                <ProductSection navigation={navigation} />
+                <ProductSection navigation={navigation} />
             </ProductContainer>
         </Container>
     );
