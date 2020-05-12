@@ -1,5 +1,5 @@
 # Shoes Store (Work in Progress)
-Um e-commerce Web e mobile desenvolvido com React.js e React Naive utilizando Redux
+Um e-commerce Web/mobile desenvolvido com React.js e React Naive utilizando Redux
 
 
 ## Telas:
